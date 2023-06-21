@@ -7,16 +7,25 @@ const tasks = [
   { id: 3, title: "Passear com o cachorro" },
 ];
 
-function TaskScreen({ navigation }) {
+function TaskScreen({ route, navigation }) {
+  const { parameter } = route.params;
+
+  const handlenavigate = () => {
+    navigation.navigate("Home");
+  };
+
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>
+        Aqui está sua lista de tarefas: {parameter}
+      </Text>
       <FlatList
         style={styles.list}
         data={tasks}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => <Text style={styles.text}>{item.title}</Text>}
       />
-      <Button title="Voltar" onPress={() => navigation.navigate("Home")} />
+      <Button title="Voltar" onPress={handlenavigate} />
     </View>
   );
 }

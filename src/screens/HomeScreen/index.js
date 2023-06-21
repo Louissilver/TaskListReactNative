@@ -2,10 +2,15 @@ import React from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 
 function HomeScreen({ navigation }) {
+  const name = "Luís";
+  const handleNavigate = () => {
+    navigation.navigate("Task", { parameter: name });
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Bem-vindo à lista de tarefas!</Text>
-      <Button title="Ver tarefas" onPress={() => navigation.navigate("Task")} />
+      <Text style={styles.text}>Bem-vindo à lista de tarefas, {name}!</Text>
+      <Button title="Ver tarefas" onPress={handleNavigate} />
     </View>
   );
 }
